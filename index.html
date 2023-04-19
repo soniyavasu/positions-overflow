@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>POSITIONS AND OVERFLOW</title>
+<style>
+div.static {
+  position: static;
+  border: 3px solid #73AD21;
+}
+div.relative {
+  position: relative;
+  left: 30px;
+  border: 3px solid #73AD21;
+}
+div.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  border: 3px solid #73AD21;
+}
+div.relative {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  border: 3px solid #73AD21;
+} 
+
+div.absolute {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+#overflowTest {
+  background: #4CAF50;
+  color: white;
+  padding: 15px;
+  width: 50%;
+  height: 100px;
+  overflow: scroll;
+  border: 1px solid #ccc;
+} 
+.visible{
+  background-color: coral;
+  width: 200px;
+  height: 65px;
+  border: 1px solid;
+  overflow: visible;
+}
+.hidden{
+  background-color: coral;
+  width: 200px;
+  height: 65px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+.scroll{
+  background-color: coral;
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  overflow: scroll;
+}
+.auto{
+  background-color: coral;
+  width: 200px;
+  height: 65px;
+  border: 1px solid black;
+  overflow: auto;
+}
+.container {
+  position: relative;
+}
+
+.black-box {
+  position: relative;
+  z-index: 1;
+  border: 2px solid black;
+  height: 100px;
+  margin: 30px;
+}
+
+.gray-box {
+  position: absolute;
+  z-index: 3; /* gray box will be above both green and black box */
+  background: lightgray;
+  height: 60px;  
+  width: 70%;
+  left: 50px;
+  top: 50px;
+}
+
+.green-box {
+  position: absolute;
+  z-index: 2; /* green box will be above black box */
+  background: lightgreen;
+  width: 35%;
+  left: 270px;
+  top: -15px;
+  height: 100px;
+}
+.container1 {
+  position: relative;
+}
+
+.black-box1 {
+  position: relative;
+  z-index: -1;
+  border: 2px solid black;
+  height: 100px;
+  margin: 30px;
+}
+
+.gray-box1 {
+  position: absolute;
+  z-index: -3; /* gray box will be above both green and black box */
+  background: lightgray;
+  height: 60px;  
+  width: 70%;
+  left: 50px;
+  top: 50px;
+}
+
+.green-box1 {
+  position: absolute;
+  z-index: -2; /* green box will be above black box */
+  background: lightgreen;
+  width: 35%;
+  left: 270px;
+  top: -15px;
+  height: 100px;
+}
+</style>
+</head>
+<body>
+<section class="sec">
+<h1 style="color:red; text-align:center;"><u>Position</u></h1>
+	<h2>position: static;</h2>
+
+	<p>An element with position: static; is not positioned in any special way; it is always positioned according to the normal flow of the page:</p>
+
+	<div class="static">
+	This div element has position: static;
+	</div>
+	
+	
+<hr>
+
+
+	<h2>position: relative;</h2>
+
+	<p>An element with position: relative; is positioned relative to its normal position:</p>
+
+	<div class="relative">
+	This div element has position: relative;
+	</div>
+	
+<hr>
+
+	<h2>position: fixed;</h2>
+
+	<p>An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled:</p>
+
+	<div class="fixed">
+	This div element has position: fixed;
+	</div>
+	
+<hr>
+
+	<h2>position: absolute;</h2>
+
+	<p>An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed):</p>
+
+	<div class="relative">This div element has position: relative;
+	  <div class="absolute">This div element has position: absolute;</div>
+	</div>
+	
+<hr>
+
+	<div class="sticky">I am sticky!</div>
+
+	<div style="padding-bottom:2000px">
+	  <p>In this example, the sticky element sticks to the top of the page (top: 0), when you reach its scroll position.</p>
+	  <p>Scroll back up to remove the stickyness.</p>
+	  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+	  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+	</div>
+	
+<hr>
+
+	<h1 style="color:red; text-align:center;"><u>CSS Overflow</u></h1>
+	<h2>Overflow</h2>
+
+	<p>The overflow property controls what happens to content that is too big to fit into an area.</p>
+
+	<div id="overflowTest">Thissssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss text is really long and the height of its container is only 100 pixels. Therefore, a scrollbar is added to help the reader to scroll the content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</div>
+
+<hr>
+
+	<h2>Overflow: visible</h2>
+
+	<p>By default, the overflow is visible, meaning that it is not clipped and it renders outside the element's box:</p>
+
+	<div class="visible">You can use the overflow property when you want to have better control of the layout. The overflow property specifies what happens if content overflows an element's box.</div>
+<pre>
+
+
+
+</pre>
+<hr>
+
+	<h2>Overflow: hidden</h2>
+
+	<p>With the hidden value, the overflow is clipped, and the rest of the content is hidden:</p>
+	<p>Try to remove the overflow property to understand how it works.</p>
+
+	<div class="hidden">You can use the overflow property when you want to have better control of the layout. The overflow property specifies what happens if content overflows an element's box.</div>
+
+<hr>
+
+	<h2>Overflow: scroll</h2>
+
+	<p>Setting the overflow value to scroll, the overflow is clipped and a scrollbar is added to scroll inside the box. Note that this will add a scrollbar both horizontally and vertically (even if you do not need it):</p>
+
+	<div class="scroll">You can use the overflow property whennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn you want to have better control of the layout. The overflow property specifies what happens if content overflows an element's box.</div>
+
+<hr>
+
+<h1 style="color:red; text-align:center;"><u>Z-index</u></h1>
+
+	<h2>Z-index</h1>
+
+	<p>An element with greater stack order is always above an element with a lower stack order.</p>
+
+	<div class="container">
+	  <div class="black-box">Black box (z-index: 1)</div>
+	  <div class="gray-box">Gray box (z-index: 3)</div>
+	  <div class="green-box">Green box (z-index: 2)</div>
+	</div>
+	
+<hr>
+
+<p>An element with greater stack order is always above an element with a lower stack order.</p>
+
+	<div class="container1">
+	  <div class="black-box1">Black box (z-index: 1)</div>
+	  <div class="gray-box1">Gray box (z-index: 3)</div>
+	  <div class="green-box1">Green box (z-index: 2)</div>
+	</div>
+</section>
+<body>
+</html>
